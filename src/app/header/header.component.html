@@ -1,0 +1,20 @@
+<div class="menubar">
+    <a class="logo"  [routerLink]="isCoordinator ? '/access-coordinator' : HOME_ROUTE">
+        <span class="span">Sistema </span><span class="text-span">Horários Escolares</span>
+    </a>
+    <div class="menu">
+        <div [routerLink]="isCoordinator ? '/access-coordinator' : HOME_ROUTE" class="type-menu">Home</div>
+        <div class="type-menu">Horários</div>
+        <div class="type-menu">Serviços</div>
+    </div>
+    <div class="btn-login" [routerLink]="isCoordinator && !hideLoginButton ? null : 'type-access'" *ngIf="!hideLoginButton">
+        <div class="text-login">Login</div>
+    </div>
+       
+    <div class="btn-printing-timetables" routerLink="#" *ngIf="isCoordinator && !hideLoginButton">
+        <div class="text-printing">Impressão dos Horários</div>
+    </div>
+    <div class="btn-logout" (click)="logout()" *ngIf="isCoordinator && !hideLoginButton">
+        <div class="text-logout">Sair</div>
+    </div>
+</div>

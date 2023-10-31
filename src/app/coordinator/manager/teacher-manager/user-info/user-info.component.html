@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="text">
+        <div class="title">
+            <img routerLink="/teacher-manager" style="cursor: pointer;" src="assets/img/Fill.svg" alt="Voltar">
+            <p>Acesso como Coordenador</p>
+        </div>
+        <div class="sub-title">
+            <p>Visualize um usuário e suas informações</p>
+        </div>
+    </div>
+
+    <div class="group">
+        <div class="user-key">
+            <img class="icon" src="assets/img/key.svg" />
+            <img class="icon-cicle" src="assets/img/Cicle.svg" />
+            <p class="text-user-key">CPF:</p>
+            <p class="key">{{ teacherInfo.cpf }}</p>
+        </div>
+        <div class="user-name">
+            <img class="icon" src="assets/img/user.svg" />
+            <img class="icon-cicle" src="assets/img/Cicle.svg" />
+            <p class="text-user-name">Nome:</p>
+            <p class="name">{{ teacherInfo.name }}</p>
+        </div>
+        <div class="user-discipline">
+            <img class="icon" src="assets/img/discipline.svg" />
+            <img class="icon-cicle" src="assets/img/Cicle.svg" />
+            <p class="text-user-discipline">Disciplina:</p>
+            <p class="discipline">{{ teacherInfo.discipline }}</p>
+        </div>
+
+    </div>
+</div>

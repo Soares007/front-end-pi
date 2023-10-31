@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="text">
+        <div class="title">
+            <img routerLink="/type-access" style="cursor: pointer;" src="assets/img/Fill.svg" alt="Voltar">
+            <p>Vamos Iniciar!</p>
+        </div>
+        <div class="sub-title">
+            <p>Faça login em sua conta para ter acesso ao sistema</p>
+        </div>
+    </div>
+    <form [formGroup]="formGroupLogin" (ngSubmit)="login()">
+        <div class="email">
+            <input type="text" formControlName="email" placeholder="Email">
+            <div *ngIf="formGroupLogin.get('email')?.invalid && formGroupLogin.get('email')?.touched">
+                <small>Email inválido!</small>
+            </div>
+        </div>
+
+        <div class="password">
+            <input type="password" formControlName="password" placeholder="Senha">
+            <div *ngIf="formGroupLogin.get('password')?.invalid && formGroupLogin.get('password')?.touched">
+                <small>Senha inválida!</small>
+            </div>
+        </div>
+
+        <div class="to-enter" (click)="login()">
+            <div class="BUTTON">
+                <p>Entrar</p>
+                <div class="overlap-group">
+                    <img class="fill" src="assets/img/Fill 1.svg" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
