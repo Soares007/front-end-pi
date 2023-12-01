@@ -3,4 +3,5 @@ body {
     padding: 0;
     background: #ECF9FF;
     font-family: "ABeeZee-Regular", Helvetica;
+    box-sizing: border-box;
 }

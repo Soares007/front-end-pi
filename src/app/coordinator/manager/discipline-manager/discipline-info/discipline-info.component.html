@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="text">
+        <div class="title">
+            <img routerLink="/discipline-manager" style="cursor: pointer;" src="assets/img/Fill.svg" alt="Voltar">
+            <p>Acesso como Coordenador</p>
+        </div>
+        <div class="sub-title">
+            <p>Visualize uma disciplina e suas informações</p>
+        </div>
+    </div>
+
+    <div class="group">
+        <div class="discipline-name">
+            <p class="text-discipline-name">Disciplina:</p>
+            <p class="name">{{ discipline.name }}</p>
+        </div>
+        <div class="discipline-description">
+            <p class="text-discipline-description">Descrição:</p>
+            <p class="description" style="max-width: 600px; max-height: 50px; overflow: auto;">{{ discipline.description
+                }}</p>
+        </div>
+        <div class="discipline-teacher">
+            <p class="text-discipline-teacher">Professor:</p>
+            <p class="teacher">{{ discipline.teacher }}</p>
+        </div>
+        <div class="discipline-dayOfWeek">
+            <p class="text-discipline-dayOfWeek">Dia da Semana:</p>
+            <p class="dayOfWeek">{{ discipline.dayofweek }}</p>
+        </div>
+        <div class="discipline-startTime">
+            <p class="text-discipline-startTime">Hora de Início:</p>
+            <p class="startTime">{{ discipline.starttime }}</p>
+        </div>
+        <div class="discipline-endTime">
+            <p class="text-discipline-endTime">Hora de Término:</p>
+            <p class="endTime">{{ discipline.endtime }}</p>
+        </div>
+    </div>
+</div>

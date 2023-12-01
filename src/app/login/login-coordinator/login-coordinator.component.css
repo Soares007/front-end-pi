@@ -22,13 +22,14 @@ form{
 .title {
     display: flex;
     align-items: center;
+    align-items:baseline;
     gap: 10px;
     font-size: 24px;
     font-weight: 600;
 }
 
 .sub-title {
-    margin-top: -20px;
+    margin-top: -10px;
     margin-bottom: 30px;
 }
 
@@ -36,7 +37,7 @@ input {
     background-color: #C21E1E;
     color: #FFFFFF;
     width: 360px;
-    height: 40px;
+    height: 50px;
     font-size: 18px;
     padding: 6px;
     border: none;
@@ -60,6 +61,7 @@ input {
 }
 
 .to-enter .BUTTON p {
+    margin-top: 17px;
     margin-left: 34px;
     color: #FFFFFF;
 }

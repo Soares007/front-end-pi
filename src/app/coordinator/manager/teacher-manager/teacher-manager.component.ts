@@ -1,56 +1,48 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Teacher } from 'src/app/teacher';
+import { TeacherService } from 'src/app/teacher.service';
 
 @Component({
   selector: 'app-teacher-manager',
   templateUrl: './teacher-manager.component.html',
   styleUrls: ['./teacher-manager.component.css']
 })
-export class TeacherManagerComponent {
-  constructor(private router: Router) { }
-  selectedTeacher: string = '';
-  listOfTeachers: any[] = [];
-  showFormNewTeacher: boolean = false;
-  selectedTeacherInfo: any;
+export class TeacherManagerComponent implements OnInit {
 
-  newTeacher: any = {};
-  isOptionSelected(): boolean {
-    return this.selectedTeacher !== undefined && this.selectedTeacher !== '';
+  teachers: Teacher[] = [];
+
+  constructor(
+    private teacherService: TeacherService, 
+    private router: Router,  
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.loadTeachers();
   }
 
-  addNewTeacher() {
-    // Define a propriedade para mostrar o formulário
-    this.showFormNewTeacher = true;
+  loadTeachers(){
+    this.teacherService.getTeachers().subscribe({
+      next: (data) => (this.teachers = data)
+    });
   }
 
-  saveNewTeacher(newTeacher: any) {
-    // Adiciona o novo professor à lista
-    this.listOfTeachers.push(newTeacher);
-
-    // Limpa os dados do novo professor
-    this.newTeacher = {};
-
-    // Oculta o formulário
-    this.showFormNewTeacher = false;
+  create(){
+    this.router.navigate(['createTeacher']);
   }
 
-  toggleFormNewTeacher() {
-    this.showFormNewTeacher = !this.showFormNewTeacher;
+  edit(teacher: Teacher) {
+    this.router.navigate(['teacherDetails', teacher.id]);
+  }  
+
+  delete(teacher: Teacher) {
+    this.teacherService.delete(teacher).subscribe({
+      next: () => this.loadTeachers()
+    });
   }
 
-  // Adiciona esse método para lidar com o evento emitido pelo FormNewTeacherComponent
-  onNewTeacherAdded(newTeacher: any) {
-    this.saveNewTeacher(newTeacher);
+  viewInformation(teacher: Teacher) {
+    this.router.navigate(['user-info', teacher.id]);
   }
-
-  onSelectTeacher() {
-    // Encontre as informações do professor com base no CPF selecionado
-    this.selectedTeacherInfo = this.listOfTeachers.find(teacher => teacher.cpf === this.selectedTeacher);
-  }
-
-  viewInformation() {
-    // Navegue para a página user-info e passe as informações como parâmetros
-    this.router.navigate(['/user-info', { teacherInfo: JSON.stringify(this.selectedTeacherInfo) }]);
-  }
-
 }

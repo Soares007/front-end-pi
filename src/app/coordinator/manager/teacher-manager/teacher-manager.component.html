@@ -1,3 +1,5 @@
+
+
 <form>
   <div class="container">
     <div class="text">
@@ -10,32 +12,32 @@
       </div>
     </div>
 
-    <div class="BUTTON-New-User" (click)="toggleFormNewTeacher()">
+    <div class="BUTTON-New-User" (click)="create()">
       <p>Novo Professor</p>
     </div>
 
-    <app-form-new-teacher [showFormNewTeacher]="showFormNewTeacher"
-      (newTeacherAdded)="saveNewTeacher($event)"></app-form-new-teacher>
+    <div class="group" style="overflow: auto;">
 
-    <div class="group">
-      <select id="teachers" name="teachers" [(ngModel)]="selectedTeacher" (change)="onSelectTeacher()">
-        <option value="" disabled selected hidden>Selecione o Professor</option>
-        <option *ngFor="let teacher of listOfTeachers" [value]="teacher.cpf">{{ teacher.name }}</option>
-      </select>
-
-      <div class="group-buttons">
-        <div class="button-info" (click)="viewInformation()" *ngIf="isOptionSelected()">
-          <p class="text-info">Visualizar Informações</p>
-          <img class="icon-info" src="assets/img/info.svg" />
-          <img class="icon-cicle-info" src="assets/img/Cicle.svg" />
-        </div>
-
-        <div class="button-plus" *ngIf="isOptionSelected()">
-          <p class="text-plus">Associar á uma nova disciplina</p>
-          <img class="icon-plus" src="assets/img/plus.svg" />
-          <img class="icon-cicle" src="assets/img/Cicle.svg" />
-        </div>
-      </div>
+      <table class="table table-light table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Opções</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let teacher of teachers">
+              <th scope="row">{{teacher.id}}</th>
+              <td>{{teacher.name | capitalizeWords}}</td>
+              <td>
+                <button class="btn btn-primary me-1" (click)="edit(teacher)">Editar</button>
+                <button class="btn btn-danger me-1" (click)="delete(teacher)">Excluir</button>
+                <button class="btn btn-info me-1" (click)="viewInformation(teacher)">Visualizar Informações</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
     </div>
   </div>
 </form>

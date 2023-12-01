@@ -1,0 +1,40 @@
+<form>
+  <div class="container">
+    <div class="text">
+      <div class="title">
+        <img routerLink="/access-coordinator" style="cursor: pointer;" src="assets/img/Fill.svg" alt="Voltar">
+        <p>Acesso como Coordenador</p>
+      </div>
+      <div class="sub-title">
+        <p>Gerencie os cursos</p>
+      </div>
+    </div>
+
+    <div class="BUTTON-New-Discipline" (click)="create()">
+      <p>Novo Curso</p>
+    </div>
+
+    <div class="group">
+      <table class="table table-light table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Curso</th>
+            <th scope="col">Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let course of courses">
+            <th scope="row">{{course.id}}</th>
+            <td>{{course.name | capitalizeWords}}</td>
+            <td>
+              <button class="btn btn-primary me-1" (click)="edit(course)">Editar</button>
+              <button class="btn btn-danger me-1" (click)="delete(course)">Excluir</button>
+              <button class="btn btn-info me-1" (click)="viewInformation(course)">Visualizar Informações</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</form>

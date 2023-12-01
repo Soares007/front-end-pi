@@ -1,0 +1,41 @@
+<form>
+    <div class="container">
+      <div class="text">
+        <div class="title">
+          <img routerLink="/access-coordinator" style="cursor: pointer;" src="assets/img/Fill.svg" alt="Voltar">
+          <p>Acesso como Coordenador</p>
+        </div>
+        <div class="sub-title">
+          <p>Gerencie as Disciplinas</p>
+        </div>
+      </div>
+  
+      <div class="BUTTON-New-Discipline" (click)="create()">
+        <p>Nova Disciplina</p>
+      </div>
+  
+      <div class="group">
+        <table class="table table-light table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Disciplina</th>
+              <th scope="col">Opções</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let discipline of discipline">
+              <th scope="row">{{discipline.id}}</th>
+              <td>{{discipline.name | capitalizeWords}}</td>
+              <td>
+                <button class="btn btn-primary me-1" (click)="edit(discipline)">Editar</button>
+                <button class="btn btn-danger me-1" (click)="delete(discipline)">Excluir</button>
+                <button class="btn btn-info me-1" (click)="viewInformation(discipline)">Visualizar Informações</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+  

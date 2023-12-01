@@ -8,25 +8,27 @@
   margin-top: 142px;
   margin-bottom: 200px;
   border-radius: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   font-family: ABeeZee;
   box-shadow: 1px 2px 8px #0000004c;
+  overflow: auto;
 }
 
 .text {
-  margin-top: 30px;
   text-align: center;
-
 }
 
 .title {
   display: flex;
+  align-items:baseline;
   gap: 10px;
   font-size: 24px;
   font-weight: 600;
 }
 
 .sub-title {
-  margin-top: -20px;
+  margin-top: -10px;
   margin-bottom: 35px;
 }
 
@@ -36,14 +38,16 @@
   justify-content: center;
   position: relative;
   cursor: pointer;
-  top: 0px;
-  left: 0px;
   width: 170px;
   height: 60px;
+  margin-bottom: 40px;
   background-color: #C21E1E;
   color: #ffffff;
   border-radius: 5px;
   box-shadow: 1px 2px 8px #0000004c;
+}
+.BUTTON-New-User p{
+  margin-top: 14px;
 }
 
 select {
@@ -105,4 +109,8 @@ select {
   position: relative;
   top: 0px;
   left: 37px;
+}
+
+.modal.show {
+  display: block;
 }

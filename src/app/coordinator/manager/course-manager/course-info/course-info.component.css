@@ -1,0 +1,58 @@
+.container {
+  width: 1170px;
+  height: 508px;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 142px;
+  margin-bottom: 200px;
+  border-radius: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-family: ABeeZee;
+  box-shadow: 1px 2px 8px #0000004c;
+}
+
+
+.title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.sub-title {
+  margin-left: 37px;
+  margin-top: -10px;
+  margin-bottom: 35px;
+}
+
+.group {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.discipline-name,
+.discipline-description,
+.discipline-teacher,
+.discipline-date,
+.discipline-dayOfWeek,
+.discipline-startTime,
+.discipline-endTime {
+  display: flex;
+}
+
+.text-discipline-name,
+.text-discipline-description,
+.text-discipline-teacher,
+.text-discipline-date,
+.text-discipline-dayOfWeek,
+.text-discipline-startTime,
+.text-discipline-endTime {
+  font-weight: 600;
+  margin-right: 7px;
+}

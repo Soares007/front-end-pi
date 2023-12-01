@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="text">
+      <div class="title">
+          <img routerLink="/course-manager" style="cursor: pointer;" src="assets/img/Fill.svg" alt="Voltar">
+          <p>Acesso como Coordenador</p>
+      </div>
+      <div class="sub-title">
+          <p>Visualize um curso e suas informações</p>
+      </div>
+  </div>
+
+  <div class="group">
+      <div class="discipline-name">
+          <p class="text-discipline-name">Curso:</p>
+          <p class="name">{{ course?.name }}</p>
+      </div>
+      <div class="discipline-dayOfWeek">
+          <p class="text-discipline-dayOfWeek">Ano:</p>
+          <p class="courseYear">{{ course?.courseYear }}</p>
+      </div>
+      <div class="discipline-startTime">
+          <p class="text-discipline-startTime">Semestre:</p>
+          <p class="semester">{{ course?.semester }}</p>
+      </div>
+      <div class="discipline-endTime">
+          <p class="text-discipline-endTime">Turno:</p>
+          <p class="shift">{{ course?.shift }}</p>
+      </div>
+      <div class="discipline-endTime">
+          <p class="text-discipline-endTime">Disciplinas:</p>
+          <p class="classSubjects">{{ getDisciplineString(course?.id || 0) | titlecase }}</p>
+      </div>
+  </div>
+</div>

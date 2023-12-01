@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col m-auto">
+      <form [formGroup]="formGroupDiscipline">
+        <div class="mb-3">
+          <div class="display-6 text-center p-3">Cadastro de Disciplina</div>
+          <label for="name" class="form-label">Nome: </label>
+          <input type="text" formControlName="name" class="form-control" id="name"
+            placeholder="Digite o nome da Disciplina">
+          <div *ngIf="submitted && name.invalid">
+            <small class="text-danger">Disciplina inválida!</small>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Descrição:</label>
+          <input type="text" formControlName="description" class="form-control" id="description"
+            placeholder="Faça uma descrição">
+        </div>
+        <div class="mb-3">
+          <label for="dayofweek" class="form-label">Dias da Semana:</label>
+          <div *ngFor="let day of dayofweekOption; let i = index">
+            <input type="checkbox" [checked]="formGroupDiscipline.get('dayofweek')?.value[i]"
+              (change)="toggleCheckbox(i)" />
+            {{ day }}
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="starttime" class="form-label">Hora de Início:</label>
+          <input type="time" formControlName="starttime" class="form-control" id="starttime"
+            placeholder="Informe a Hora de Início">
+        </div>
+        <div class="mb-3">
+          <label for="endtime" class="form-label">Hora de Término:</label>
+          <input type="time" formControlName="endtime" class="form-control" id="endtime"
+            placeholder="Informe a Hora de Término">
+        </div>
+        <div class="mb-3 d-flex justify-content-end">
+          <button class="btn btn-primary me-1" (click)="save()">Salvar</button>
+          <button class="btn btn-danger" (click)="cancel()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

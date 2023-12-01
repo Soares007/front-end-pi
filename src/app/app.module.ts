@@ -14,6 +14,15 @@ import { CoordinatorComponent } from './coordinator/coordinator.component';
 import { TeacherManagerComponent } from './coordinator/manager/teacher-manager/teacher-manager.component';
 import { UserInfoComponent } from './coordinator/manager/teacher-manager/user-info/user-info.component';
 import { FormNewTeacherComponent } from './coordinator/manager/teacher-manager/form-new-teacher/form-new-teacher.component';
+import { DisciplineManagerComponent } from './coordinator/manager/discipline-manager/discipline-manager.component';
+import { HistoryRequestComponent } from './coordinator/manager/history-request/history-request.component';
+import { DisciplineInfoComponent } from './coordinator/manager/discipline-manager/discipline-info/discipline-info.component';
+import { FormNewDisciplineComponent } from './coordinator/manager/discipline-manager/form-new-discipline/form-new-discipline.component';
+import { CpfFormatPipe } from './cpf-format.pipe';
+import { CapitalizeWordsPipe } from './capitalize-words.pipe';
+import { CourseManagerComponent } from './coordinator/manager/course-manager/course-manager.component';
+import { FormNewCourseComponent } from './coordinator/manager/course-manager/form-new-course/form-new-course.component';
+import { CourseInfoComponent } from './coordinator/manager/course-manager/course-info/course-info.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +36,15 @@ import { FormNewTeacherComponent } from './coordinator/manager/teacher-manager/f
     TeacherManagerComponent,
     UserInfoComponent,
     FormNewTeacherComponent,
+    DisciplineManagerComponent,
+    HistoryRequestComponent,
+    DisciplineInfoComponent,
+    FormNewDisciplineComponent,
+    CpfFormatPipe,
+    CapitalizeWordsPipe,
+    CourseManagerComponent,
+    FormNewCourseComponent,
+    CourseInfoComponent,
   ],
   imports: [
     BrowserModule,

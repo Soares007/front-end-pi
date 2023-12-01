@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col m-auto">
+      <form *ngIf="formGroupCourse" [formGroup]="formGroupCourse">
+        <div class="mb-3">
+          <div class="display-6 text-center p-3">Cadastro de Curso</div>
+          <label for="name" class="form-label">Nome: </label>
+          <input type="text" formControlName="name" class="form-control" id="name" placeholder="Digite o nome do curso">
+          <div *ngIf="formGroupCourse && submitted && name && name.invalid">
+            <small class="text-danger">Curso inválido!</small>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="courseYear" class="form-label">Ano:</label>
+          <select formControlName="courseYear" class="form-select" id="courseYear" placeholder="Digite o ano">
+            <option value="" disabled selected>Selecione o ano</option>
+            <option *ngFor="let year of availableYears" [value]="year">{{ year }}</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="semester" class="form-label">Semestre: </label>
+          <select formControlName="semester" class="form-select" id="semester">
+            <option value="" disabled selected>Selecione quantos semestres irá ter o curso</option>
+            <option value="1 Semestre">1 Semestre</option>
+            <option value="2 Semestres">2 Semestres</option>
+            <option value="3 Semestres">3 Semestres</option>
+            <option value="4 Semestres">4 Semestres</option>
+            <option value="5 Semestres">5 Semestres</option>
+            <option value="6 Semestres">6 Semestres</option>
+            <option value="7 Semestres">7 Semestres</option>
+            <option value="8 Semestres">8 Semestres</option>
+            <option value="9 Semestres">9 Semestres</option>
+            <option value="10 Semestres">10 Semestres</option>
+            <option value="11 Semestres">11 Semestres</option>
+            <option value="12 Semestres">12 Semestres</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="shift" class="form-label">Turno: </label>
+          <select formControlName="shift" class="form-select" id="shift">
+            <option value="" disabled selected>Selecione o Turno</option>
+            <option value="Matutino">Matutino</option>
+            <option value="Vespertino">Vespertino</option>
+            <option value="Noturno">Noturno</option>
+          </select>
+          <div *ngIf="formGroupCourse && submitted && shift && shift.invalid">
+            <small class="text-danger">Turno inválido!</small>
+          </div>
+        </div>
+
+        <div class="list-group mb-3">
+          <label class="form-label mb-3">Disciplinas: </label>
+          <div *ngIf="classSubjects.length !== 0;">
+            <label *ngFor="let classSubject of classSubjects" class="list-group-item">
+              <input type="checkbox" [checked]="classSubjectArray.value.includes(classSubject.id)" (change)="toggleClassSubject(classSubject.id)">
+              {{classSubject.name}}
+            </label>
+          </div>
+          <div *ngIf="formGroupCourse && submitted && classSubjectArray && classSubjectArray.hasError('required')">
+            <small class="text-danger">Selecione pelo menos uma disciplina!</small>
+          </div>
+        </div>
+
+        <div class="mb-3 d-flex justify-content-end">
+          <button class="btn btn-primary me-1" (click)="save()">Salvar</button>
+          <button class="btn btn-danger" (click)="cancel()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
