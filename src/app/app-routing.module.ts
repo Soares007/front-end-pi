@@ -1,3 +1,6 @@
+import { TeamInfoComponent } from './coordinator/manager/team-manager/team-info/team-info.component';
+import { TeamManagerComponent } from './coordinator/manager/team-manager/team-manager.component';
+import { FormNewTeamComponent } from './coordinator/manager/team-manager/form-new-team/form-new-team.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -33,8 +36,12 @@ const routes: Routes = [
   { path: 'course-manager', component: CourseManagerComponent},
   { path: 'course-info/:id', component: CourseInfoComponent },
   { path: 'courseDetails/:id', component: FormNewCourseComponent },
+  { path: 'team-info/:id', component: TeamInfoComponent },
+  { path: 'teamDetails/:id', component: FormNewTeamComponent },
   { path: 'createCourse', component: FormNewCourseComponent },
-
+  { path: 'createTeam', component: FormNewTeamComponent },
+  { path: 'team-manager', component: TeamManagerComponent},
+  { path: 'team-info/:id', component: TeamInfoComponent },
 ];
 
 @NgModule({

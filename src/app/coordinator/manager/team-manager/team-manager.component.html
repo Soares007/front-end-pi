@@ -1,0 +1,43 @@
+
+
+<form>
+  <div class="container">
+    <div class="text">
+      <div class="title">
+        <img routerLink="/access-coordinator" style="cursor: pointer;" src="assets/img/Fill.svg" alt="Voltar">
+        <p>Acesso como Coordenador</p>
+      </div>
+      <div class="sub-title">
+        <p>Gerenciamento de Turmas</p>
+      </div>
+    </div>
+
+    <div class="BUTTON-New-User" (click)="create()">
+      <p>Nova turma</p>
+    </div>
+
+    <div class="group" style="overflow: auto;">
+
+      <table class="table table-light table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Quantia</th>
+              <th scope="col">Opções</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let team of teams">
+              <th scope="row">{{team.id}}</th>
+              <td>{{team.students}}</td>
+              <td>
+                <button class="btn btn-primary me-1" (click)="edit(team)">Editar</button>
+                <button class="btn btn-danger me-1" (click)="delete(team)">Excluir</button>
+                <button class="btn btn-info me-1" (click)="viewInformation(team)">Visualizar Informações</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</form>

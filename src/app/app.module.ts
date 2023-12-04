@@ -23,6 +23,9 @@ import { CapitalizeWordsPipe } from './capitalize-words.pipe';
 import { CourseManagerComponent } from './coordinator/manager/course-manager/course-manager.component';
 import { FormNewCourseComponent } from './coordinator/manager/course-manager/form-new-course/form-new-course.component';
 import { CourseInfoComponent } from './coordinator/manager/course-manager/course-info/course-info.component';
+import { TeamManagerComponent } from './coordinator/manager/team-manager/team-manager.component';
+import { FormNewTeamComponent } from './coordinator/manager/team-manager/form-new-team/form-new-team.component';
+import { TeamInfoComponent } from './coordinator/manager/team-manager/team-info/team-info.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,9 @@ import { CourseInfoComponent } from './coordinator/manager/course-manager/course
     CourseManagerComponent,
     FormNewCourseComponent,
     CourseInfoComponent,
+    TeamManagerComponent,
+    FormNewTeamComponent,
+    TeamInfoComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col m-auto">
+      <form [formGroup]="formGroupTeam">
+        <div class="mb-3">
+          <div class="display-6 text-center p-3">Cadastro de Turma</div>
+          <label for="course" class="form-label">Curso: </label>
+          <select formControlName="course" id="course">
+            <option *ngFor="let course of courses" value="{{course.id}}">{{course.name}}</option>
+          </select>
+          <div *ngIf="submitted && course.invalid">
+            <small class="text-danger">Curso inválido!</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="shift" class="form-label">Turno: </label>
+          <select formControlName="shift" class="form-select" id="shift">
+            <option value="" disabled selected>Selecione o Turno</option>
+            <option value="Matutino">Matutino</option>
+            <option value="Vespertino">Vespertino</option>
+            <option value="Noturno">Noturno</option>
+          </select>
+          <div *ngIf="formGroupTeam && submitted && shift && shift.invalid">
+            <small class="text-danger">Turno inválido!</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="students" class="form-label">Quantia de aluno:</label>
+          <input type="number" formControlName="students" class="form-control" id="students"
+            placeholder="Indique a quantia de alunos">
+        </div>
+        <div *ngIf="submitted && students.invalid">
+          <small class="text-danger">Quantia de alunos inválida!</small>
+        </div>
+
+        <div class="mb-3 d-flex justify-content-end">
+          <button class="btn btn-primary me-1" (click)="save()">Salvar</button>
+          <button class="btn btn-danger" (click)="cancel()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

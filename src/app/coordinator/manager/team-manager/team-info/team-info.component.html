@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="text">
+      <div class="title">
+          <img routerLink="/team-manager" style="cursor: pointer;" src="assets/img/Fill.svg" alt="Voltar">
+          <p>Acesso como Coordenador</p>
+      </div>
+      <div class="sub-title">
+          <p>Visualize uma turma e suas informações</p>
+      </div>
+  </div>
+
+  <div class="group">
+      <div class="group">
+          <div class="user-key">
+              <p class="text-user-key">Curso:</p>
+              <p class="key">{{ team?.course || 'N/A'  }}</p>
+          </div>
+          <div class="user-name">
+              <p class="text-user-name">Turno:</p>
+              <p class="name">{{ team?.shift || 'N/A' | capitalizeWords }}</p>
+          </div>
+          <div class="user-discipline">
+              <p class="text-user-discipline">Quantidade de Estudantes:</p>
+              <p class="name">{{ team?.students || 'N/A' }}</p>
+          </div>
+      </div>
+  </div>
+</div>
