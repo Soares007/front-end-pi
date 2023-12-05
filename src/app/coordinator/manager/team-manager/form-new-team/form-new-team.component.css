@@ -13,3 +13,12 @@
   font-family: ABeeZee;
   box-shadow: 1px 2px 8px #0000004c;
 }
+
+input[type=number]::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+  
+}
+input[type=number] { 
+ -moz-appearance: textfield;
+ appearance: textfield;
+}

@@ -4,11 +4,12 @@
       <form [formGroup]="formGroupTeam">
         <div class="mb-3">
           <div class="display-6 text-center p-3">Cadastro de Turma</div>
-          <label for="course" class="form-label">Curso: </label>
-          <select formControlName="course" id="course">
+          <label for="shift" class="form-label">Curso: </label>
+          <select formControlName="shift" class="form-select" id="shift">
+            <option value="" disabled selected>Selecione o Curno</option>
             <option *ngFor="let course of courses" value="{{course.id}}">{{course.name}}</option>
           </select>
-          <div *ngIf="submitted && course.invalid">
+          <div *ngIf="formGroupTeam && submitted && course && course.invalid">
             <small class="text-danger">Curso inválido!</small>
           </div>
         </div>
@@ -30,9 +31,9 @@
           <label for="students" class="form-label">Quantia de aluno:</label>
           <input type="number" formControlName="students" class="form-control" id="students"
             placeholder="Indique a quantia de alunos">
-        </div>
-        <div *ngIf="submitted && students.invalid">
-          <small class="text-danger">Quantia de alunos inválida!</small>
+            <div *ngIf="submitted && students.invalid">
+              <small class="text-danger">Quantia de alunos inválida!</small>
+            </div>
         </div>
 
         <div class="mb-3 d-flex justify-content-end">

@@ -35,12 +35,10 @@ export class FormNewTeamComponent {
     if (id) {
       this.getTeamById(id);
     }
-    console.log("Courses:", this.courses);  // Adicione esta linha
   }
 
 
   loadCourses() {
-    console.log("Carregando cursos...");  // Adicione esta linha
     this.courseService.getCourses().subscribe({
       next: (data) => (this.courses = data)
     });
