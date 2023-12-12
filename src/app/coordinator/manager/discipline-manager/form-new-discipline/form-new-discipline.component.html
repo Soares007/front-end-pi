@@ -16,24 +16,6 @@
           <input type="text" formControlName="description" class="form-control" id="description"
             placeholder="Faça uma descrição">
         </div>
-        <div class="mb-3">
-          <label for="dayofweek" class="form-label">Dias da Semana:</label>
-          <div *ngFor="let day of dayofweekOption; let i = index">
-            <input type="checkbox" [checked]="formGroupDiscipline.get('dayofweek')?.value[i]"
-              (change)="toggleCheckbox(i)" />
-            {{ day }}
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="starttime" class="form-label">Hora de Início:</label>
-          <input type="time" formControlName="starttime" class="form-control" id="starttime"
-            placeholder="Informe a Hora de Início">
-        </div>
-        <div class="mb-3">
-          <label for="endtime" class="form-label">Hora de Término:</label>
-          <input type="time" formControlName="endtime" class="form-control" id="endtime"
-            placeholder="Informe a Hora de Término">
-        </div>
         <div class="mb-3 d-flex justify-content-end">
           <button class="btn btn-primary me-1" (click)="save()">Salvar</button>
           <button class="btn btn-danger" (click)="cancel()">Cancelar</button>

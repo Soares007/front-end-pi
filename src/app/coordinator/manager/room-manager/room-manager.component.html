@@ -1,0 +1,41 @@
+<form>
+    <div class="container">
+      <div class="text">
+        <div class="title">
+          <img routerLink="/access-coordinator" style="cursor: pointer;" src="assets/img/Fill.svg" alt="Voltar">
+          <p>Acesso como Coordenador</p>
+        </div>
+        <div class="sub-title">
+          <p>Gerencie as Salas e Laboratórios</p>
+        </div>
+      </div>
+  
+      <div class="BUTTON-New-Discipline" (click)="create()">
+        <p>Novo Sala/Laboratório</p>
+      </div>
+  
+      <div class="group">
+        <table class="table table-light table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Sala/Lab</th>
+              <th scope="col">Opções</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let room of rooms">
+              <th scope="row">{{room.id}}</th>
+              <td>{{room.name | capitalizeWords}}</td>
+              <td>
+                <button class="btn btn-primary me-1" (click)="edit(room)">Editar</button>
+                <button class="btn btn-danger me-1" (click)="delete(room)">Excluir</button>
+                <button class="btn btn-info me-1" (click)="viewInformation(room)">Visualizar Informações</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+  

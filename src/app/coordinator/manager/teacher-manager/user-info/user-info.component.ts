@@ -13,8 +13,8 @@ import { Component, OnInit } from '@angular/core';
 export class UserInfoComponent implements OnInit {
 
   teachers: Teacher[] = [];
-  disciplines: Discipline[] = [];
   teacher?: Teacher;
+  disciplines: Discipline[] = [];
 
   constructor(
     private teacherService: TeacherService,
@@ -42,15 +42,15 @@ export class UserInfoComponent implements OnInit {
     }
   }
 
-  loadDisciplines() {
-    this.disciplineService.getDisciplines().subscribe((disciplines) => {
-      this.disciplines = disciplines;
-    });
-  }
-
   loadTeachers() {
     this.teacherService.getTeachers().subscribe((teachers) => {
       this.teachers = teachers;
+    });
+  }
+
+  loadDisciplines() {
+    this.disciplineService.getDisciplines().subscribe((disciplines) => {
+      this.disciplines = disciplines;
     });
   }
 
@@ -58,9 +58,9 @@ export class UserInfoComponent implements OnInit {
     const teacher = this.teachers.find((teacher) => teacher.id === teacherId);
 
     if (teacher) {
-      const disciplineStrings = Array.isArray(teacher.school_subject)
-        ? teacher.school_subject.map((disciplineId) => {
-            const discipline = this.disciplines.find((t) => t.id === disciplineId);
+      const disciplineStrings = Array.isArray(teacher.classSubjects)
+        ? teacher.classSubjects.map((classSubjectsId) => {
+            const discipline = this.disciplines.find((t) => t.id === classSubjectsId);
             return discipline ? discipline.name : 'Disciplina não encontrado';
           })
         : ['Professor não encontrado'];
@@ -68,6 +68,6 @@ export class UserInfoComponent implements OnInit {
       return disciplineStrings.join(', ');
     }
 
-    return 'Turma não encontrada';
+    return 'Disciplina não encontrada';
   }
 }

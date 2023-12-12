@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="text">
+        <div class="title">
+            <img routerLink="/scheduling-manager" style="cursor: pointer;" src="assets/img/Fill.svg" alt="Voltar">
+            <p>Acesso como Coordenador</p>
+        </div>
+        <div class="sub-title">
+            <p>Visualize um agendamento e suas informações</p>
+        </div>
+    </div>
+
+    <div class="group">
+        <div class="group">
+            <div class="user-key">
+                <p class="text-user-key">ID:</p>
+                <p class="key">{{ scheduling?.id || 'N/A' }}</p>
+            </div>
+            <div class="user-name">
+                <p class="text-user-name">Curso:</p>
+                <p class="name">{{ courseName || 'N/A' }} - {{ courseShift || 'N/A' }}</p>
+              </div>
+            <div class="user-name">
+                <p class="text-user-name">Disciplina:</p>
+                <p class="name">{{ disciplineName || 'N/A' }}</p>
+            </div>
+            <div class="user-name">
+                <p class="text-user-name">Professor:</p>
+                <p class="name">{{ teacherName || 'N/A' }}</p>
+            </div>
+            <div class="user-name">
+                <p class="text-user-name">Data:</p>
+                <p class="name">{{ scheduling?.calendar || 'N/A' | dateFormat }}</p>
+            </div>
+            <div class="user-name">
+                <p class="text-user-name">Hora de Início:</p>
+                <p class="name">{{ scheduling?.startTime || 'N/A' }}</p>
+            </div>
+            <div class="user-name">
+                <p class="text-user-name">Hora de Término:</p>
+                <p class="name">{{ scheduling?.endTime || 'N/A' }}</p>
+            </div>
+            <div class="user-name">
+                <p class="text-user-name">Sala/Laboratório:</p>
+                <p class="name">{{ roomAndLaboratoryName || 'N/A' }} - {{roomAndLaboratoryIdentity || 'N/A'}}</p>
+            </div>
+        </div>
+    </div>
+</div>

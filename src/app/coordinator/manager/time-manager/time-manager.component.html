@@ -1,0 +1,42 @@
+<form>
+    <div class="container">
+      <div class="text">
+        <div class="title">
+          <img routerLink="/access-coordinator" style="cursor: pointer;" src="assets/img/Fill.svg" alt="Voltar">
+          <p>Acesso como Coordenador</p>
+        </div>
+        <div class="sub-title">
+          <p>Gerenciamento de Horários</p>
+        </div>
+      </div>
+  
+      <div class="BUTTON-New-User" (click)="create()">
+        <p>Novo Horário</p>
+      </div>
+  
+      <div class="group" style="overflow: auto;">
+  
+        <table class="table table-light table-striped">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Horário</th>
+                <th scope="col">Opções</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let time of times">
+                <th scope="row">{{time.id}}</th>
+                <td>{{time.classSubjectId}}</td>
+                <td>
+                  <button class="btn btn-primary me-1" (click)="edit(time)">Editar</button>
+                  <button class="btn btn-danger me-1" (click)="delete(time)">Excluir</button>
+                  <button class="btn btn-info me-1" (click)="viewInformation(time)">Visualizar Informações</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </form>
+  

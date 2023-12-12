@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="text">
+        <div class="title">
+            <img routerLink="/time-manager" style="cursor: pointer;" src="assets/img/Fill.svg" alt="Voltar">
+            <p>Acesso como Coordenador</p>
+        </div>
+        <div class="sub-title">
+            <p>Visualize um horário e suas informações</p>
+        </div>
+    </div>
+  
+    <div class="group">
+        <div class="group">
+            <div class="user-key">
+                <p class="text-user-key">Disciplina:</p>
+                <p class="key">{{ disciplineName }}</p>
+            </div>
+            <div class="user-name">
+                <p class="text-user-name">Dias da Semana:</p>
+                <p class="name">{{ time?.daysofweek }}</p>
+            </div>
+            <div class="user-discipline">
+                <p class="text-user-discipline">Hora de Início:</p>
+                <p class="name">{{ formatTime(time?.startTimes) }}</p>
+            </div>
+            <div class="user-discipline">
+                <p class="text-user-discipline">Hora de Término:</p>
+                <p class="name">{{ formatTime(time?.endTimes) }}</p>
+            </div>            
+        </div>
+    </div>
+  </div>
+  

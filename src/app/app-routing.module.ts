@@ -17,6 +17,15 @@ import { FormNewDisciplineComponent } from './coordinator/manager/discipline-man
 import { CourseManagerComponent } from './coordinator/manager/course-manager/course-manager.component';
 import { FormNewCourseComponent } from './coordinator/manager/course-manager/form-new-course/form-new-course.component';
 import { CourseInfoComponent } from './coordinator/manager/course-manager/course-info/course-info.component';
+import { SchedulingManagerComponent } from './coordinator/manager/scheduling-manager/scheduling-manager.component';
+import { FormNewSchedulingComponent } from './coordinator/manager/scheduling-manager/form-new-scheduling/form-new-scheduling.component';
+import { SchedulingInfoComponent } from './coordinator/manager/scheduling-manager/scheduling-info/scheduling-info.component';
+import { RoomManagerComponent } from './coordinator/manager/room-manager/room-manager.component';
+import { FormNewRoomComponent } from './coordinator/manager/room-manager/form-new-room/form-new-room.component';
+import { RoomInfoComponent } from './coordinator/manager/room-manager/room-info/room-info.component';
+import { TimeManagerComponent } from './coordinator/manager/time-manager/time-manager.component';
+import { FormNewTimeComponent } from './coordinator/manager/time-manager/form-new-time/form-new-time.component';
+import { TimeInfoComponent } from './coordinator/manager/time-manager/time-info/time-info.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -42,6 +51,18 @@ const routes: Routes = [
   { path: 'createTeam', component: FormNewTeamComponent },
   { path: 'team-manager', component: TeamManagerComponent},
   { path: 'team-info/:id', component: TeamInfoComponent },
+  { path: 'scheduling-manager', component: SchedulingManagerComponent },
+  { path: 'createScheduling', component: FormNewSchedulingComponent },
+  { path: 'schedulingDetails/:id', component: FormNewSchedulingComponent },
+  { path: 'scheduling-info/:id', component: SchedulingInfoComponent },
+  { path: 'room-manager', component: RoomManagerComponent },
+  { path: 'createRoom', component: FormNewRoomComponent },
+  { path: 'room-info/:id', component: RoomInfoComponent },
+  { path: 'roomDetails/:id', component: FormNewRoomComponent },
+  { path: 'time-manager', component: TimeManagerComponent },
+  { path: 'createTime', component: FormNewTimeComponent },
+  { path: 'time-info/:id', component: TimeInfoComponent },
+  { path: 'timeDetails/:id', component: FormNewTimeComponent }
 ];
 
 @NgModule({

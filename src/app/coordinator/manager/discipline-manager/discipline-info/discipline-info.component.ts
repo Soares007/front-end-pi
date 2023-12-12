@@ -19,13 +19,11 @@ export class DisciplineInfoComponent {
   ngOnInit(): void {
     const disciplineId = Number(this.route.snapshot.paramMap.get('id'));
 
-    // Certifique-se de que o id não é nulo ou NaN
     if (!isNaN(disciplineId)) {
       this.disciplineService.getDiscipline(disciplineId).subscribe({
         next: (data: Discipline) => (this.discipline = data)
       });
     } else {
-      // Lida com o caso em que o id é inválido
       console.error('ID da Disciplina inválido');
     }
   }

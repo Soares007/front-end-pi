@@ -1,0 +1,41 @@
+<form>
+    <div class="container">
+      <div class="text">
+        <div class="title">
+          <img routerLink="/access-coordinator" style="cursor: pointer;" src="assets/img/Fill.svg" alt="Voltar">
+          <p>Acesso como Coordenador</p>
+        </div>
+        <div class="sub-title">
+          <p>Gerencie os Agendamentos</p>
+        </div>
+      </div>
+  
+      <div class="BUTTON-New-Discipline" (click)="create()">
+        <p>Novo Agendamento</p>
+      </div>
+  
+      <div class="group">
+        <table class="table table-light table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Agendamento</th>
+              <th scope="col">Opções</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let scheduling of schedulings">
+              <th scope="row">{{scheduling.id}}</th>
+              <td>{{scheduling.courseId}}</td>
+              <td>
+                <button class="btn btn-primary me-1" (click)="edit(scheduling)">Editar</button>
+                <button class="btn btn-danger me-1" (click)="delete(scheduling)">Excluir</button>
+                <button class="btn btn-info me-1" (click)="viewInformation(scheduling)">Visualizar Informações</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+  

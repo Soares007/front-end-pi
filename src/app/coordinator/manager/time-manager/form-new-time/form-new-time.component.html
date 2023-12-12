@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col m-auto">
+      <form [formGroup]="formGroupTime">
+        <div class="mb-3">
+          <div class="display-6 text-center p-3">Cadastro de Horários</div>
+          <label for="classSubjectId" class="form-label">Disciplina: </label>
+          <select formControlName="classSubjectId" class="form-select" id="classSubjectId">
+            <option value="" disabled selected>Selecione a Disciplina</option>
+            <option *ngFor="let classSubjectId of classSubjectIds" [value]="classSubjectId.id">{{classSubjectId.name}}
+            </option>
+          </select>
+          <div *ngIf="submitted && classSubjectId.invalid">
+            <small class="text-danger">Selecione uma disciplina!</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="daysofweek" class="form-label">Dias da Semana:</label>
+          <div *ngFor="let day of dayofweekOption; let i = index">
+            <input type="checkbox" [checked]="formGroupTime.get('daysofweek')?.value[i]" (change)="toggleCheckbox(i)"/>
+            <label class="form-check-label">{{ day }}</label>
+            
+            <label for="startTime{{i}}" class="form-label">Hora de Início:</label>
+            <input type="time" [formControl]="$any(formGroupTime).get('startTimes')?.controls[i]" id="startTime{{i}}" />
+
+            <label for="endTime{{i}}" class="form-label">Hora de Término:</label>
+            <input type="time" [formControl]="$any(formGroupTime).get('endTimes')?.controls[i]" id="endTime{{i}}" />
+
+          </div>
+        </div>
+
+        <div class="mb-3 d-flex justify-content-end">
+          <button class="btn btn-primary me-1" (click)="save()">Salvar</button>
+          <button class="btn btn-danger" (click)="cancel()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

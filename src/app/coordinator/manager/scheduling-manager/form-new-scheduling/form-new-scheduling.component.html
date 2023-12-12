@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="row">
+    <div class="col m-auto">
+      <form [formGroup]="formGroupScheduling">
+        <div class="mb-3">
+          <div class="display-6 text-center p-3">Cadastro de Agendamento</div>
+          <label for="courseId" class="form-label">Curso: </label>
+          <select formControlName="courseId" class="form-select" id="courseId">
+            <option [ngValue]="null" disabled selected>Selecione o Curso</option>
+            <option *ngFor="let courseId of courseIds" [value]="courseId.id">{{courseId.name}}-{{courseId.shift}}
+            </option>
+          </select>
+          <div *ngIf="submitted && courseId.invalid">
+            <small class="text-danger">Curso inválido!</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="classSubjectId" class="form-label">Disciplina: </label>
+          <select formControlName="classSubjectId" class="form-select" id="classSubjectId">
+            <option value="" disabled selected>Selecione a Discipline</option>
+            <option *ngFor="let classSubjectId of classSubjectIds" [value]="classSubjectId.id">{{classSubjectId.name}}
+            </option>
+          </select>
+          <div *ngIf="submitted && classSubjectId.invalid">
+            <small class="text-danger">Disciplina inválido!</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="teacher" class="form-label">Professor: </label>
+          <select formControlName="teacher" class="form-select" id="teacher">
+            <option value="" disabled selected>Selecione o Professor</option>
+            <option *ngFor="let teacher of teachers" [value]="teacher.id">{{teacher.name}}</option>
+          </select>
+          <div *ngIf="submitted && teacher.invalid">
+            <small class="text-danger">Professor inválido!</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="calendar" class="form-label">Informe a data que deseja fazer o agendamento:</label>
+          <div>
+            <p-calendar formControlName="calendar" [showIcon]="true" id="calendar" dateFormat="dd/mm/yy"></p-calendar>
+          </div>
+          <div *ngIf="submitted && calendar.invalid">
+            <small class="text-danger">Data inválida!</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="startTime" class="form-label">Hora de Início:</label>
+          <input type="time" formControlName="startTime" class="form-control" id="startTime"
+            placeholder="Informe a Hora de Início">
+          <div *ngIf="submitted && startTime.invalid">
+            <small class="text-danger">Hora de Início inválido!</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="endTime" class="form-label">Hora de Término:</label>
+          <input type="time" formControlName="endTime" class="form-control" id="endTime"
+            placeholder="Informe a Hora de Término">
+          <div *ngIf="submitted && endTime.invalid">
+            <small class="text-danger">Hora de Término inválido!</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="roomAndLaboratory" class="form-label">Sala/Laboratório: </label>
+          <select formControlName="roomAndLaboratory" class="form-select" id="roomAndLaboratory">
+            <option value="" disabled selected>Selecione a Sala/Lab</option>
+            <option *ngFor="let roomAndLaboratory of roomAndLaboratorys" [value]="roomAndLaboratory.id">
+              {{roomAndLaboratory.name}}-{{roomAndLaboratory.identity}}</option>
+          </select>
+          <div *ngIf="submitted && roomAndLaboratory.invalid">
+            <small class="text-danger">Sala/Lab inválido!</small>
+          </div>
+        </div>
+
+        <div class="mb-3 d-flex justify-content-end">
+          <button class="btn btn-primary me-1" (click)="save()">Salvar</button>
+          <button class="btn btn-danger" (click)="cancel()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

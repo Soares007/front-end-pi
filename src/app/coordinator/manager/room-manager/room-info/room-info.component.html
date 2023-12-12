@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="text">
+        <div class="title">
+            <img routerLink="/room-manager" style="cursor: pointer;" src="assets/img/Fill.svg" alt="Voltar">
+            <p>Acesso como Coordenador</p>
+        </div>
+        <div class="sub-title">
+            <p>Visualize uma sala/laboratório e suas informações</p>
+        </div>
+    </div>
+
+    <div class="group">
+        <div class="group">
+            <div class="user-key">
+                <p class="text-user-key">ID:</p>
+                <p class="key">{{ room?.id || 'N/A' }}</p>
+            </div>
+            <div class="user-name">
+                <p class="text-user-name">Nome:</p>
+                <p class="name">{{ room?.name || 'N/A' }}</p>
+            </div>
+            <div class="user-identity">
+                <p class="text-user-identity">Identificação:</p>
+                <p class="identity">{{ room?.identity || 'N/A' }}</p>
+            </div>
+        </div>
+    </div>
+</div>

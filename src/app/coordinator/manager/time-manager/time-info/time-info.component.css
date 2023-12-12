@@ -1,0 +1,51 @@
+.container {
+    width: 1170px;
+    height: 508px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 142px;
+    margin-bottom: 200px;
+    border-radius: 10px;
+    font-family: ABeeZee;
+    box-shadow: 1px 2px 8px #0000004c;
+  }
+  
+  .text {
+    margin-top: 30px;
+  }
+  
+  .title {
+    display: flex;
+    align-items:baseline;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .sub-title {
+    margin-left: 37px;
+    margin-top: -10px;
+    margin-bottom: 60px;
+  }
+  
+  .group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .user-key,
+  .user-name,
+  .user-discipline {
+    display: flex;
+  }
+  
+  .text-user-key,
+  .text-user-name,
+  .text-user-discipline {
+    font-weight: 600;
+    margin-right: 7px;
+  }
+  

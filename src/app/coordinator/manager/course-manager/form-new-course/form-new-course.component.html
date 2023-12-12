@@ -13,7 +13,7 @@
         <div class="mb-3">
           <label for="courseYear" class="form-label">Ano:</label>
           <select formControlName="courseYear" class="form-select" id="courseYear" placeholder="Digite o ano">
-            <option value="" disabled selected>Selecione o ano</option>
+            <option value="" disabled selected>Selecione o ano que iniciará o curso</option>
             <option *ngFor="let year of availableYears" [value]="year">{{ year }}</option>
           </select>
         </div>
@@ -49,7 +49,7 @@
         </div>
 
         <div class="list-group mb-3">
-          <label class="form-label mb-3">Disciplinas: </label>
+          <label class="form-label mb-3">Marque as disciplinas que o curso irá ter: </label>
           <div *ngIf="classSubjects.length !== 0;">
             <label *ngFor="let classSubject of classSubjects" class="list-group-item">
               <input type="checkbox" [checked]="classSubjectArray.value.includes(classSubject.id)" (change)="toggleClassSubject(classSubject.id)">
@@ -57,7 +57,7 @@
             </label>
           </div>
           <div *ngIf="formGroupCourse && submitted && classSubjectArray && classSubjectArray.hasError('required')">
-            <small class="text-danger">Selecione pelo menos uma disciplina!</small>
+            <small class="text-danger">Selecione pelo menos uma disciplina ou caso não tenha criado disciplina crie e volte aqui novamente!</small>
           </div>
         </div>
 

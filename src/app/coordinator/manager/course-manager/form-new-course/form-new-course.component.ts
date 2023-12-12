@@ -27,7 +27,7 @@ export class FormNewCourseComponent {
   ) {
     this.formGroupCourse = formBuilder.group({
       id: [''],
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\u00C0-\u017F\s]*[a-zA-Z\u00C0-\u017F][a-zA-Z\u00C0-\u017F\s]*$/)]],
       courseYear: [''],
       semester: [''],
       shift: ['', [Validators.required]],
@@ -121,14 +121,14 @@ export class FormNewCourseComponent {
   toggleClassSubject(classSubjectsId: number): void {
     const classSubjectArray = this.classSubjectArray;
 
-    // Check if the timeId is already in the array
+   //Verifica se o timeId já está no array
     const index = classSubjectArray.value.indexOf(classSubjectsId);
 
     if (index === -1) {
-      // If not in the array, add it
+     // Se não estiver no array, adicione-o
       classSubjectArray.push(this.formBuilder.control(classSubjectsId));
     } else {
-      // If already in the array, remove it
+      //Se já estiver no array, remova-o
       classSubjectArray.removeAt(index);
     }
   }

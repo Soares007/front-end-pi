@@ -21,7 +21,7 @@
             </div>
             <div class="user-discipline">
                 <p class="text-user-discipline">Disciplinas:</p>
-                <p class="name">{{ getDisciplineString(teacher?.id || 0) }}</p>
+                <p class="classSubjects">{{ getDisciplineString(teacher?.id || 0) | capitalizeWords }}</p>
             </div>
         </div>
     </div>

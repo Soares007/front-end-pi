@@ -18,54 +18,53 @@ export class FormNewTeacherComponent implements OnInit {
   submitted: boolean = false;
   isEditing: boolean = false;
 
-  disciplines: Discipline[] = [];
   teachers: Teacher[] = [];
+  classSubjects: Discipline[] = [];
 
   constructor(private teacherService: TeacherService, private disciplineService: DisciplineService, private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.formGroupTeacher = formBuilder.group({
       id: [''],
       cpf: ['', [Validators.required]],
-      name: ['', [Validators.required]],
-      school_subject: this.formBuilder.array([]),
+      name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\u00C0-\u017F\s]*[a-zA-Z\u00C0-\u017F][a-zA-Z\u00C0-\u017F\s]*$/)]],
+      classSubjects: this.formBuilder.array([]),
     });
   }
 
-  get schoolSubjectArray(): FormArray {
-    return this.formGroupTeacher.get('school_subject') as FormArray;
+  get classSubjectArray(): FormArray {
+    return this.formGroupTeacher.get('classSubjects') as FormArray;
   }
 
   ngOnInit(): void {
+    this.loadClassSubjects();
     const id = Number(this.route.snapshot.paramMap.get("id"));
     if (id) {
       this.getTeacherById(id);
     }
-
-    this.loadSchoolSubject();
   }
 
-  loadSchoolSubject() {
-    this.disciplineService.getDisciplines().subscribe((disciplines) => {
-      this.disciplines = disciplines;
+  loadClassSubjects(){
+    this.disciplineService.getDisciplines().subscribe((classSubjects) => {
+      this.classSubjects = classSubjects;
     });
   }
 
   getTeacherById(id: number) {
     this.teacherService.getTeacher(id).subscribe({
       next: data => {
-        while (this.schoolSubjectArray.length !== 0) {
-          this.schoolSubjectArray.removeAt(0);
+        while (this.classSubjectArray.length !== 0) {
+          this.classSubjectArray.removeAt(0);
         }
 
         this.formGroupTeacher.setValue({
           id: data.id,
           cpf: data.cpf,
           name: data.name,
-          school_subject: []
+          classSubjects: []
         });
 
-        if (Array.isArray(data.school_subject)) {
-          data.school_subject.forEach(teacherId => {
-            this.schoolSubjectArray.push(this.formBuilder.control(teacherId));
+        if (Array.isArray(data.classSubjects)) {
+          data.classSubjects.forEach(classSubjectsId => {
+            this.classSubjectArray.push(this.formBuilder.control(classSubjectsId));
           });
         }
 
@@ -76,61 +75,43 @@ export class FormNewTeacherComponent implements OnInit {
 
   save() {
     this.submitted = true;
-  
+
     if (this.formGroupTeacher.valid) {
-      let data: any; // Declare 'data' here
-  
-      const formValue = this.formGroupTeacher.value;
-      const schoolSubjectValues = this.schoolSubjectArray.value;
-      formValue.school_subject = schoolSubjectValues;
-  
-      if (this.isEditing) {
-        this.teacherService.getTeacher(formValue.id).subscribe({
-          next: responseData => {
-            data = responseData;
-            
-            const oldSchoolSubjectsArray = Array.isArray(data.school_subject) ? data.school_subject : [];
-            const subjectsToRemove = Array.isArray(oldSchoolSubjectsArray) ? oldSchoolSubjectsArray.filter((subj: number) => !schoolSubjectValues.includes(subj)) : [];
-            const subjectsToAdd = Array.isArray(schoolSubjectValues) ? schoolSubjectValues.filter((subj: number) => !oldSchoolSubjectsArray.includes(subj)) : [];
-  
-            formValue.school_subject = subjectsToAdd;
-  
-            if (subjectsToRemove.length > 0) {
-              this.teacherService.removeSubjectsFromTeacher(formValue.id, subjectsToRemove).subscribe();
+      if (this.classSubjectArray.length >= 0) {
+        if (this.isEditing) {
+          this.teacherService.update(this.formGroupTeacher.value).subscribe({
+            next: () => {
+              this.router.navigate(['teacher-manager']);
             }
-  
-            this.teacherService.update(formValue).subscribe({
-              next: () => {
-                this.router.navigate(['teacher-manager']);
-              }
-            });
-          }
-        });
+          });
+        } else {
+          this.teacherService.save(this.formGroupTeacher.value).subscribe({
+            next: () => {
+              this.router.navigate(['teacher-manager']);
+            }
+          });
+        }
       } else {
-        this.teacherService.save(formValue).subscribe({
-          next: () => {
-            this.router.navigate(['teacher-manager']);
-          }
-        });
+        // Defina um erro personalizado no FormGroup para acionar a exibição da mensagem de erro no template
+        this.formGroupTeacher.get('classSubjects')?.setErrors({ 'required': true });
       }
     }
   }
 
-  toggleSchoolSubject(schoolSubjectId: number): void {
-    const schoolSubjectArray = this.schoolSubjectArray;
+  toggleClassSubject(classSubjectsId: number): void {
+    const classSubjectArray = this.classSubjectArray;
 
-    // Check if the timeId is already in the array
-    const index = schoolSubjectArray.value.indexOf(schoolSubjectId);
+    //Verifica se o timeId já está no array
+    const index = classSubjectArray.value.indexOf(classSubjectsId);
 
     if (index === -1) {
-      // If not in the array, add it
-      schoolSubjectArray.push(this.formBuilder.control(schoolSubjectId));
+      // Se não estiver no array, adicione-o
+      classSubjectArray.push(this.formBuilder.control(classSubjectsId));
     } else {
-      // If already in the array, remove it
-      schoolSubjectArray.removeAt(index);
+     //Se já estiver no array, remova-o
+      classSubjectArray.removeAt(index);
     }
   }
-
 
   cancel() {
     this.router.navigate(['teacher-manager']);

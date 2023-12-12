@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CourseService } from 'src/app/course.service';
 import { Team } from 'src/app/team';
 import { TeamService } from 'src/app/team.service';
 
@@ -11,11 +12,12 @@ import { TeamService } from 'src/app/team.service';
 export class TeamInfoComponent {
   teams: Team[] = [];
   team?: Team;
-
+  courseName: string = '';
 
   constructor(
     private teamService: TeamService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private courseService: CourseService
   ) {
 
   }
@@ -29,6 +31,7 @@ export class TeamInfoComponent {
       this.teamService.getTeam(teamId).subscribe({
         next: (data: Team) => {
           this.team = data;
+          this.loadCourseName(data.course);
         },
         error: (error: any) => {
           console.error('Erro ao obter informações do Turma:', error);
@@ -37,6 +40,17 @@ export class TeamInfoComponent {
     } else {
       console.error('ID de turma inválido');
     }
+  }
+
+  loadCourseName(courseId: number): void {
+    this.courseService.getCourse(courseId).subscribe({
+      next: (course) => {
+        this.courseName = course.name;
+      },
+      error: (error) => {
+        console.error('Erro ao obter nome do curso:', error);
+      }
+    });
   }
 
   loadTeams() {

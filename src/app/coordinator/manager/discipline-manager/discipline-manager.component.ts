@@ -9,7 +9,7 @@ import { DisciplineService } from 'src/app/discipline.service';
   styleUrls: ['./discipline-manager.component.css']
 })
 export class DisciplineManagerComponent {
-  discipline: Discipline[] = [];
+  disciplines: Discipline[] = [];
 
   constructor(
     private displineService: DisciplineService, private router: Router,  private route: ActivatedRoute
@@ -22,7 +22,7 @@ export class DisciplineManagerComponent {
 
   loadDisciplines(){
     this.displineService.getDisciplines().subscribe({
-      next: (data) => (this.discipline = data)
+      next: (data) => (this.disciplines = data)
     });
   }
 

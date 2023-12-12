@@ -18,16 +18,16 @@ export class FormNewTeamComponent {
 
   courses: Course[] = [];
   teams: Team[] = [];
+  selectedCourseShifts: string[] = [];
 
   constructor(private teamService: TeamService, private courseService: CourseService, private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.formGroupTeam = formBuilder.group({
       id: [''],
-      course: [, [Validators.required]],
-      students: [, [Validators.required]],
+      course: ['', [Validators.required]],
       shift: ['', [Validators.required]],
+      students: ['', [Validators.required]],
     });
   }
-
 
   ngOnInit(): void {
     this.loadCourses();
@@ -37,7 +37,25 @@ export class FormNewTeamComponent {
     }
   }
 
-
+  onCourseChange() {
+    const selectedCourseId = +this.formGroupTeam.get('course')?.value;
+  
+   //Verifica se os cursos estão carregados
+    if (this.courses.length > 0) {
+      //Encontre o curso selecionado com base no ID
+      const selectedCourse = this.courses.find(course => course.id === selectedCourseId);
+  
+     // Registra o curso selecionado para verificar se ele foi recuperado corretamente
+      console.log("Selected Course:", selectedCourse);
+  
+     //Atualiza os turnos do curso selecionado
+      this.selectedCourseShifts = selectedCourse ? [selectedCourse.shift] : [];
+      console.log("Selected Course Shifts:", this.selectedCourseShifts);
+    } else {
+      console.log("Courses are not loaded yet");
+    }
+  }
+  
   loadCourses() {
     this.courseService.getCourses().subscribe({
       next: (data) => (this.courses = data)
@@ -47,38 +65,40 @@ export class FormNewTeamComponent {
   getTeamById(id: number) {
     this.teamService.getTeam(id).subscribe({
       next: data => {
-        this.formGroupTeam.setValue({
+        this.formGroupTeam.patchValue({
           id: data.id,
           course: data.course,
+          shift: data.shift,
           students: data.students,
-          shift: data.shift
         });
-
+  
+        this.selectedCourseShifts = [data.shift];
+  
         this.isEditing = true;
       }
     });
   }
-
+  
   save() {
     this.submitted = true;
-    if (this.isEditing) {
-      if (this.formGroupTeam.valid) {
-        this.teamService.update(this.formGroupTeam.value).subscribe({
-          next: () => {
-            this.router.navigate(['team-manager']);
-          }
-        })
-      }
+
+    if (this.formGroupTeam.invalid) {
+      return;
     }
 
-    else {
+    if (this.isEditing) {
+      this.teamService.update(this.formGroupTeam.value).subscribe({
+        next: () => {
+          this.router.navigate(['team-manager']);
+        }
+      });
+    } else {
       this.teamService.save(this.formGroupTeam.value).subscribe({
         next: () => {
           this.router.navigate(['team-manager']);
         }
-      })
+      });
     }
-
   }
 
   cancel() {

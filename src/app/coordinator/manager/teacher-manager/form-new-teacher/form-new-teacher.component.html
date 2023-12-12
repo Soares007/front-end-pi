@@ -18,11 +18,13 @@
             <small class="text-danger">Nome inválido!</small>
           </div>
         </div>
-        <div class="mb-3">
-          <div *ngIf="disciplines.length !== 0">
-            <label *ngFor="let school_subject of disciplines" class="list-group-item">
-              <input type="checkbox" [checked]="schoolSubjectArray.value.includes(school_subject.id)" (change)="toggleSchoolSubject(school_subject.id)">
-              {{school_subject.name}}
+
+        <div class="list-group mb-3">
+          <label class="form-label mb-3">Marque as disciplinas que deseja associar ao professor: </label>
+          <div *ngIf="classSubjects.length !== 0;">
+            <label *ngFor="let classSubject of classSubjects" class="list-group-item">
+              <input type="checkbox" [checked]="classSubjectArray.value.includes(classSubject.id)" (change)="toggleClassSubject(classSubject.id)">
+              {{classSubject.name}}
             </label>
           </div>
         </div>
